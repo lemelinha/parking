@@ -7,7 +7,8 @@ use App\Models\Login;
 class IndexController extends Controller {
     public function index(){
         if(isset($_SESSION['logged'])){
-            $this->render('index', '');
+            $this->title = 'Parking ETEC';
+            $this->render('index', 'Painel', 'PainelLayout');
             die();
         }
 
@@ -28,6 +29,21 @@ class IndexController extends Controller {
         }
         
         $_SESSION['modal'] = ['text' => 'Email ou senha inválidos'];
+        header('Location: /');
+        die();
+    }
+
+    public function logout() {
+        unset($_SESSION['logged']);
+        if(ini_get('session.use_cookies')){
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 8400,
+                $params['path'],
+                $params['domain'],
+                $params['secure'],
+                $params['httponly']
+            );
+        }
         header('Location: /');
         die();
     }

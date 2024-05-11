@@ -23,15 +23,15 @@ abstract class Controller {
     protected function loadView(){
         require 'Codes.php'; // link dos scripts (JQuery, GSap, FontAwesome)
 
+        require '../App/Views/' . $this->directory . '/' . $this->page . '.php';
+
         if (isset($_SESSION['modal'])){
             echo "
                 <script>
-                    createModal('{$_SESSION['modal']['text']}')
+                    createModal('" . $_SESSION['modal']['text'] . "')
                 </script>
             ";
             unset($_SESSION['modal']);
         }
-
-        require '../App/Views/' . $this->directory . '/' . $this->page . '.php';
     }
 }

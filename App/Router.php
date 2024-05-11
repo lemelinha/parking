@@ -16,6 +16,12 @@ abstract class Router {
             'action' => 'loginAuth'
         ];
 
+        $routes['logout'] = [
+            'router' => '/logout',
+            'controller' => 'IndexController',
+            'action' => 'logout'
+        ];
+
         $this->routes = $routes;
     }
 }
