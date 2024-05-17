@@ -16,10 +16,16 @@ abstract class Router {
             'action' => 'loginAuth'
         ];
 
-        $routes['logout'] = [
+        $routes['Logout'] = [
             'router' => '/logout',
             'controller' => 'IndexController',
             'action' => 'logout'
+        ];
+
+        $routes['AbrirTicket'] = [
+            'router' => '/abrir/ticket',
+            'controller' => 'PainelController',
+            'action' => 'AbrirTicket'
         ];
 
         $this->routes = $routes;

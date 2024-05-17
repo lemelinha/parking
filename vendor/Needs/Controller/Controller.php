@@ -10,7 +10,7 @@ abstract class Controller {
         
         if(!empty($layout)){
             if(file_exists('../App/Layouts/' . $layout . '.php')){
-                require '../App/Layouts/' . $layout . '.php';
+                require_once '../App/Layouts/' . $layout . '.php';
                 die();
             }
             echo "Layout $layout inexistente";
@@ -21,9 +21,7 @@ abstract class Controller {
     }
     
     protected function loadView(){
-        require 'Codes.php'; // link dos scripts (JQuery, GSap, FontAwesome)
-
-        require '../App/Views/' . $this->directory . '/' . $this->page . '.php';
+        require_once '../App/Views/' . $this->directory . '/' . $this->page . '.php';
 
         if (isset($_SESSION['modal'])){
             echo "
